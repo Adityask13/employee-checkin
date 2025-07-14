@@ -1,9 +1,8 @@
 // API configuration
-const AWS_API_URL = 'https://0uq172mu3k.execute-api.us-east-2.amazonaws.com/default/EmployeeLambdaHandler';
 const PROXY_API_URL = '/api/employees';
 
-// Use proxy in development to avoid CORS issues
-const API_BASE_URL = process.env.NODE_ENV === 'development' ? PROXY_API_URL : AWS_API_URL;
+// Always use proxy to handle CORS properly in all environments
+const API_BASE_URL = PROXY_API_URL;
 
 // Employee interface based on your API response
 export interface Employee {

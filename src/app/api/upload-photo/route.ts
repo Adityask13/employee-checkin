@@ -2,6 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const AWS_PHOTO_UPLOAD_API_URL = 'https://dgraqymxui.execute-api.us-east-2.amazonaws.com/default/uploadEmployeePhoto';
 
+// Handle CORS preflight requests
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+      'Access-Control-Max-Age': '86400',
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
